@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('community_posts', function (Blueprint $table) {
             $table->id();
+            $table->text('text');
+            $table->string('path_photo');
+            $table->integer('like')->default(0);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('community_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('users')->on('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('community_id')->references('communities')->on('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
