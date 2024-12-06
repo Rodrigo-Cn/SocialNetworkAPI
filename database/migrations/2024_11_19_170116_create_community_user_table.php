@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('community_user', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('community_id');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('community_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('users')->on('id')->onDelete('cascade')->onUpdate('cascade');

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->bigInteger('user_sender_id');
-            $table->bigInteger('user_receiver_id');
+            $table->unsignedBigInteger('user_sender_id');
+            $table->unsignedBigInteger('user_receiver_id');
 
             $table->foreign('user_sender_id')->references()->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_receiver_id')->references()->on('user')->onDelete('cascade')->onUpdate('cascade');

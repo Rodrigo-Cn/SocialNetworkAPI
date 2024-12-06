@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('administrator');
+            $table->unsignedBigInteger('administrator');
             $table->text('name');
             $table->timestamps();
 
