@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('administrator');
+            $table->unsignedBigInteger('administrator_id');
             $table->text('name')->unique();
             $table->timestamps();
 
-            $table->foreign('administrator')->references('users')->on('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('administrator_id')->references('users')->on('id')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
