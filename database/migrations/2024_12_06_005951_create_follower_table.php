@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('follower', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_followed');
-            $table->unsignedBigInteger('user_follower');
+        Schema::create('followers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_followed')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_follower')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
 
-            $table->foreign('user_followed')->references('id')->on('users');
-            $table->foreign('user_follower')->references('id')->on('users');
+            $table->unique(['user_followed', 'user_follower']);
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('follower');
+        Schema::dropIfExists('followers');
     }
 };
