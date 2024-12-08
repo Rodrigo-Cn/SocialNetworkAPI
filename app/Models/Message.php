@@ -15,10 +15,10 @@ class Message extends Model
     protected $fillable = ['text','user_sender_id','user_receiver_id'];
 
     public function sender(){
-        return $this->belongsTo(User::class,'user_sender_id');
+        return $this->belongsTo(User::class,'user_sender_id','id');
     }
 
     public function receiver(){
-        return $this->belongsTo(User::class,'user_receiver_id');
+        return $this->belongsTo(User::class,'user_receiver_id','id');
     }
 }

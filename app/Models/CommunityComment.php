@@ -15,10 +15,10 @@ class CommunityComment extends Model
     protected $fillable = ['like','text','user_id','post_id'];
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 
     public function post(){
-        return $this->belongsTo(CommunityPost::class, 'post_id');
+        return $this->belongsTo(CommunityPost::class,'post_id','id');
     }
 }
